@@ -16,10 +16,11 @@ export const useGetFeaturedPosts = () => {
 const FeaturedPosts = () => {
     let {featuredPosts,featuredPostsLoaded,featuredPostsError} = useGetFeaturedPosts()
     return (
-        <div>
-           {featuredPostsLoaded && featuredPosts.map((post,index) =>(
+        <div className="text-white mb-8">
+            ***Feaured Post Section to be done later***
+           {/* {featuredPostsLoaded && featuredPosts.map((post,index) =>(
                 <p key={index}>{post.title}</p>
-            ))} 
+            ))}  */}
         </div>
     )
 }
