@@ -17,7 +17,7 @@ const PostCard = ({post}) => {
             />
             </div>
             <a href={`/post/${post.slug}`}><h1 className="transition duration-700 text-center mb-8 cursor-pointer hover:text-pink-600 text-3xl font-semibold">{post.title}</h1></a>
-            <div className="flex items-center mb-8 w-full">
+            <div className="flex items-center justify-center mb-8 w-full">
                 <div className="flex mr-8 items-center">
                     <Image
                         loader={grpahCMSImageLoader}

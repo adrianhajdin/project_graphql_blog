@@ -11,11 +11,13 @@ const PostDetails = ({post}) => {
                 <div className="col-span-8">
                     <PostDetail post={post}/>
                     <Author author={post.author}/>
-                    <AdjacentPosts/>
+                    <AdjacentPosts slug={post.slug} createdAt={post.createdAt} />
                 </div>
                 <div className="col-span-4">
-                    <RelatedPosts categories={post.categories.map(category => category.id)}/>
-                    <Categories/>
+                    <div className="sticky top-8">
+                        <RelatedPosts slug={post.slug} categories={post.categories.map(category => category.slug)}/>
+                        <Categories/>
+                    </div>
                 </div>
             </div>
         </div>
@@ -26,7 +28,7 @@ export default PostDetails
 
 export async function getStaticProps({ params}) {
     console.log("params",params)
-    const data = await getPostDetails(params.slug,params.cursor)
+    const data = await getPostDetails(params.slug)
     console.log("data",data)
     return {
       props: {
@@ -40,13 +42,13 @@ export async function getStaticProps({ params}) {
 
 export async function getStaticPaths() {
     const posts = await getPosts()
-    posts.map(({cursor,node:{ slug }}) => {
-        console.log("asdasdad ===> ", slug,cursor)
+    posts.map(({node:{ slug }}) => {
+        console.log("asdasdad ===> ", slug)
     })
     return {
-        paths: posts.map(({cursor,node:{ slug }}) => (
+        paths: posts.map(({node:{ slug }}) => (
             {
-            params: { slug,cursor },
+            params: { slug },
         })),
         fallback: true,
     }

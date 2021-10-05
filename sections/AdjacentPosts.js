@@ -1,36 +1,36 @@
-import React,{useState} from 'react'
-import Image from 'next/image'
-import moment from 'moment'
+import React,{useState,useEffect} from 'react'
 
-import {grpahCMSImageLoader} from "../util";
 import {AdjacentPostCard} from "../components"
+import {getAdjacentPosts} from "../services"
 
-const AdjacentPosts = () => {
-    const [adjacentPost, setAdjacentPost] = useState(
-        {
-            next : {
-                title: "Why betting sites are the new black Why betting sites are the new black ",
-                featuredImage:{
-                    url : "https://media.graphcms.com/H8sXQBSRuOqzURH2OSjL"
-                }
-            },
-            previous : {
-                title: "Why betting sites are the new black",
-                featuredImage:{
-                    url : "https://media.graphcms.com/l5SQcQ2TcSCn3IREvi43"
-                },
-                slug: "asda"
-            }
-        }
-    )
+const AdjacentPosts = ({createdAt,slug}) => {
+    const [adjacentPost, setAdjacentPost] = useState(null)
+    const [dataLoaded, setDataLoaded] = useState(false)
+
+    useEffect(() => {
+        const _getAdjacentPosts = async()=>{
+            let result = await getAdjacentPosts(createdAt,slug)
+            setAdjacentPost(result)
+            setDataLoaded(true)
+        } 
+        _getAdjacentPosts()
+    }, [])
+
     return (
         <div className="grid grid-cols-12 gap-12">
-            <div className="col-span-6 rounded-lg relative h-72">
-                <AdjacentPostCard post={adjacentPost.next} position="LEFT"/>
-            </div>
-            <div className="col-span-6 rounded-lg relative h-72">
-                <AdjacentPostCard post={adjacentPost.previous} position="RIGHT"/>
-            </div>
+            {dataLoaded && <>
+                
+                {adjacentPost.previous && 
+                    <div className={`${adjacentPost.next ? "col-span-6" : "col-span-12"} adjacent-post rounded-lg relative h-72`}>
+                        <AdjacentPostCard post={adjacentPost.previous} position="LEFT"/>
+                    </div>
+                }
+                {adjacentPost.next && 
+                    <div className={`${adjacentPost.previous ? "col-span-6" : "col-span-12"} adjacent-post rounded-lg relative h-72`}>
+                        <AdjacentPostCard post={adjacentPost.next} position="RIGHT"/>
+                    </div>
+                }
+            </>}
         </div>
     )
 }

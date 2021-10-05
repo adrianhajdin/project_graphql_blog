@@ -14,7 +14,9 @@ export default function Home({posts}) {
           ))}
         </div>
         <div className="col-span-4">
-          <Categories/>
+          <div className="sticky top-8">
+            <Categories/>
+          </div>
         </div>
       </div>
     </div>

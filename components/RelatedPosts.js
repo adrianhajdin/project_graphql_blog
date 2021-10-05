@@ -1,25 +1,21 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import Image from 'next/image'
 import moment from 'moment'
 
 import {grpahCMSImageLoader} from "../util";
+import {getSimilarPosts} from "../services";
 
-const RelatedPosts = ({categories}) => {
-    const [relatedPosts, setRelatedPosts] = useState([
-        {
-            title: "Why betting sites are the new black Why betting sites are the new black ",
-            featuredImage:{
-                url : "https://media.graphcms.com/l5SQcQ2TcSCn3IREvi43"
-            }
-        },
-        {
-            title: "Why betting sites are the new black",
-            featuredImage:{
-                url : "https://media.graphcms.com/l5SQcQ2TcSCn3IREvi43"
-            },
-            slug: "asda"
-        }
-    ])
+const RelatedPosts = ({categories,slug}) => {
+    const [relatedPosts, setRelatedPosts] = useState([])
+
+    useEffect(() => {
+        const _getSimilarPosts = async()=>{
+            let result = await getSimilarPosts(categories,slug)
+            setRelatedPosts(result)
+        } 
+        _getSimilarPosts()
+    }, [])
+
     return (
         <div className="bg-white shadow-lg rounded-lg p-8 pb-12 mb-8">
             <h3 className="text-xl mb-8 font-semibold border-b pb-4">Related Posts</h3>
