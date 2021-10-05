@@ -16,10 +16,9 @@ const PostCard = ({post}) => {
                 src={post.featuredImage.url}
             />
             </div>
-            <h1 className="transition duration-700 text-center mb-8 cursor-pointer hover:text-pink-600 text-3xl font-semibold">{post.title}</h1>
-            <div className="text-center flex justify-center align-middle mb-8 w-full">
-                <div className="flex mr-8">
-                    <div className="mr-2">
+            <a href={`/post/${post.slug}`}><h1 className="transition duration-700 text-center mb-8 cursor-pointer hover:text-pink-600 text-3xl font-semibold">{post.title}</h1></a>
+            <div className="flex items-center mb-8 w-full">
+                <div className="flex mr-8 items-center">
                     <Image
                         loader={grpahCMSImageLoader}
                         alt={post.author.name} 
@@ -28,8 +27,7 @@ const PostCard = ({post}) => {
                         className="align-middle rounded-full"
                         src={post.author.photo.url}
                     />
-                    </div>
-                    <p className="inline align-middle text-gray-700 font-medium text-lg">{post.author.name}</p>
+                    <p className="inline align-middle text-gray-700 ml-2 font-medium text-lg">{post.author.name}</p>
                 </div>
                 <div className="font-medium text-gray-700">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 inline mr-2 text-pink-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -42,7 +40,7 @@ const PostCard = ({post}) => {
                 {post.excerpt}
             </p>
             <div className="text-center">
-                <a className="transition duration-500 ease transform hover:-translate-y-1 inline-block bg-pink-600 text-lg font-medium rounded-full text-white px-8 py-3 cursor-pointer">
+                <a href={`/post/${post.slug}`} className="transition duration-500 ease transform hover:-translate-y-1 inline-block bg-pink-600 text-lg font-medium rounded-full text-white px-8 py-3 cursor-pointer">
                     Continue Reading
                 </a>
             </div>

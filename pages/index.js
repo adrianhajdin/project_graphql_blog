@@ -1,9 +1,8 @@
-import {FeaturedPosts,Categories} from "../sections/index"
-import {PostCard} from "../components"
-import {getPosts,getCategories} from "../services";
+import {FeaturedPosts} from "../sections/index"
+import {PostCard,Categories} from "../components"
+import {getPosts} from "../services";
 
-export default function Home({posts,categories}) {
-  console.log("Home")
+export default function Home({posts}) {
    return (
     <>
     <div className="container mx-auto px-10">
@@ -11,11 +10,11 @@ export default function Home({posts,categories}) {
         <div className="grid grid-cols-12 gap-12">
         <div className="col-span-8">
           {posts.map((post,index) =>(
-            <PostCard key={index} post={post}/>
+            <PostCard key={index} post={post.node}/>
           ))}
         </div>
         <div className="col-span-4">
-          <Categories categories={categories}/>
+          <Categories/>
         </div>
       </div>
     </div>
@@ -24,9 +23,8 @@ export default function Home({posts,categories}) {
 }
 
 export async function getStaticProps() {
-  const posts = (await getPosts(0)) || []
-  const categories = (await getCategories()) || []
+  const posts = (await getPosts()) || []
   return {
-    props: { posts,categories },
+    props: { posts },
   }
 }

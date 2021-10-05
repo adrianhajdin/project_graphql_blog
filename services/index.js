@@ -1,12 +1,59 @@
 import { request,gql } from 'graphql-request';
-const graphqlAPI = process.env.GRAPHCMS_ENDPOINT
-console.log("graphqlAPI service",graphqlAPI)
+const graphqlAPI = process.env.NEXT_PUBLIC_GRAPHCMS_ENDPOINT
 
-export async function getPosts(page) {
-    console.log("Service called",page)
+export async function getPosts() {
     let query = gql`
-    query GetPosts($skip: Int!) {
-        posts(last: 10, skip: $skip) {
+    query MyQuery {
+      postsConnection {
+        edges {
+          cursor
+          node {
+            author {
+              bio
+              name
+              id
+              photo {
+                url
+              }
+            }
+            createdAt
+            slug
+            title
+            excerpt
+            featuredImage {
+              url
+            }
+            categories {
+              name
+              slug
+            }
+          }
+        }
+      }
+    }
+    
+    `
+    let result = await request(graphqlAPI, query)
+    return result.postsConnection.edges
+}
+
+export async function getCategories() {
+  let query = `
+  query GetGategories {
+      categories {
+        name
+        slug
+      }
+  }
+  `
+  let result = await request(graphqlAPI, query)
+  return result.categories
+}
+
+export async function getPostDetails(slug){
+  let query = gql`
+    query GetPostDetails($slug : String!) {
+        post(where: {slug: $slug}) {
           title
           excerpt
           featuredImage {
@@ -14,12 +61,16 @@ export async function getPosts(page) {
           }
           author{
             name
+            bio
             photo {
               url
             }
           }
           createdAt
           slug
+          content {
+            raw
+          }
           categories {
             name
             slug
@@ -27,23 +78,6 @@ export async function getPosts(page) {
         }
     }
     `
-    let result = await request(graphqlAPI, query,{skip : page * 10})
-    console.log("Service result",result)
-    return result.posts
-}
-
-export async function getCategories() {
-    console.log("getCategories Service")
-    let query = gql`
-    query GetGategories($limit : Int!) {
-        categories(first: $limit) {
-          name
-          slug
-        }
-      }
-    `
-    console.log(query)
-    let result = await request(graphqlAPI, query,{limit : 10})
-    console.log(result)
-    return result.categories
+    let result = await request(graphqlAPI, query,{slug:slug})
+    return result.post
 }

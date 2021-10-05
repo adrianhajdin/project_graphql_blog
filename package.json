@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "graphql-request": "^3.5.0",
+    "html-react-parser": "^1.4.0",
     "moment": "^2.29.1",
     "next": "11.1.2",
     "react": "17.0.2",
@@ -23,8 +24,13 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.3.6",
-    "eslint": "7.32.0",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^18.2.1",
     "eslint-config-next": "11.1.2",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.26.1",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "postcss": "^8.3.8",
     "tailwindcss": "^2.2.7"
   }
