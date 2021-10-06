@@ -1,6 +1,6 @@
 import React from 'react'
 import {getPosts,getPostDetails} from "../../services";
-import {PostDetail,Categories,RelatedPosts,Author, CommentsForm} from "../../components";
+import {PostDetail,Categories,RelatedPosts,Author, Comments,CommentsForm} from "../../components";
 import {AdjacentPosts} from "../../sections";
 
 const PostDetails = ({post}) => {
@@ -12,6 +12,7 @@ const PostDetails = ({post}) => {
                     <Author author={post.author}/>
                     <AdjacentPosts slug={post.slug} createdAt={post.createdAt} />
                     <CommentsForm slug={post.slug}/>
+                    <Comments slug={post.slug}/>
                 </div>
                 <div className="col-span-4">
                     <div className="sticky top-8">
