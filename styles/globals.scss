@@ -35,6 +35,16 @@ body {
     }
   }
 }
+.react-multi-carousel-list {
+  & .arrow-btn{
+    transition: width 300ms ease;
+    width: 50px;
+    &:hover{
+      width: 60px;
+    }
+  }
+  
+}
 
 a {
   color: inherit;

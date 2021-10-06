@@ -172,3 +172,28 @@ export async function getCategoryPost(slug) {
   let result = await request(graphqlAPI, query,{slug:slug})
   return result.postsConnection.edges
 }
+
+export async function getFeaturedPosts() {
+  let query = `
+  query GetCategoryPost() {
+    posts(where: {featuredPost: true}) {
+      author {
+        name
+        photo {
+          url
+        }
+      }
+      featuredImage {
+        url
+      }
+      title
+      slug
+      createdAt
+    }
+  }
+  
+    
+  `
+  let result = await request(graphqlAPI, query)
+  return result.posts
+}

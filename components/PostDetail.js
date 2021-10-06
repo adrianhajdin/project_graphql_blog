@@ -6,29 +6,31 @@ import {grpahCMSImageLoader} from "../util";
 
 const PostDetail = ({post}) => {
 
-    const getContentFragment = (text,obj,type) => {
+    const getContentFragment = (index,text,obj,type) => {
         if(obj){
             if(obj.bold){
-                text = (<b>{text}</b>)
+                text = (<b key={index}>{text}</b>)
             }
             if(obj.italic){
-                text = (<em>{text}</em>)
+                text = (<em key={index}>{text}</em>)
             }
             if(obj.underline){
-                text = (<u>{text}</u>)
+                text = (<u key={index}>{text}</u>)
             }    
         }
         switch(type){
             case "heading-three": 
-                return <h3 className="text-xl font-semibold mb-4">{text.map((item,index) => <React.Fragment key={index}>{item}</React.Fragment>)}</h3>
+                return <h3 key={index} className="text-xl font-semibold mb-4">{text.map((item,index) => <React.Fragment key={index}>{item}</React.Fragment>)}</h3>
             case "paragraph": 
-                return <p className="mb-8">{text.map((item,index) => <React.Fragment key={index}>{item}</React.Fragment>)}</p>
+                return <p key={index} className="mb-8">{text.map((item,index) => <React.Fragment key={index}>{item}</React.Fragment>)}</p>
             case "heading-four": 
-                return <h4 className="text-md font-semibold mb-4">{text.map((item,index) => <React.Fragment key={index}>{item}</React.Fragment>)}</h4>
+                return <h4 key={index} className="text-md font-semibold mb-4">{text.map((item,index) => <React.Fragment key={index}>{item}</React.Fragment>)}</h4>
             case "image": 
                 return  <Image
+                key={index}
                 loader={grpahCMSImageLoader}
                 alt={obj.title} 
+                unoptimized
                 height={obj.height}
                 width={obj.width}
                 src={obj.src}
@@ -44,6 +46,7 @@ const PostDetail = ({post}) => {
             <div className="bg-white shadow-lg rounded-lg p-8 pb-12 mb-8">
                 <div className="relative shadow-md inline-block w-full h-80 mb-6">
                 <Image
+                    unoptimized
                     loader={grpahCMSImageLoader}
                     alt={post.title} 
                     className="shadow-lg rounded-lg"
@@ -54,6 +57,7 @@ const PostDetail = ({post}) => {
                 <div className="flex items-center mb-8 w-full">
                     <div className="flex mr-8 items-center">
                         <Image
+                            unoptimized
                             loader={grpahCMSImageLoader}
                             alt={post.author.name} 
                             height="30px"
@@ -72,12 +76,13 @@ const PostDetail = ({post}) => {
                 </div>
                 <h1 className="mb-8 text-3xl font-semibold">{post.title}</h1>
                 {
-                    post.content.raw.children.map(typeObj => {
-                        let children = typeObj.children.map(item => {
-                            return getContentFragment(item.text,item)
+                    post.content.raw.children.map((typeObj,index) => {
+                        let children = typeObj.children.map((item,itemindex) => {
+                            return getContentFragment(itemindex,item.text,item)
                         })
                         console.log("children",children)
                         return getContentFragment(
+                            index,
                             children,
                             typeObj,
                             typeObj.type

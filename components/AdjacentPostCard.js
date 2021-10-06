@@ -1,5 +1,6 @@
-import React,{useState} from 'react'
+import React from 'react'
 import moment from 'moment'
+import Link from 'next/link'
 
 const AdjacentPostCard = ({post,position}) => {
     
@@ -11,15 +12,15 @@ const AdjacentPostCard = ({post,position}) => {
                 <p className="text-white text-shadow font-semibold text-xs">{moment(post.createdAt).format("MMM DD, YYYY")}</p>
                 <p className="text-white text-shadow font-semibold text-2xl text-center">{post.title}</p>
             </div>
-            <a href={`/post/${post.slug}`} className="cursor-pointer absolute w-full h-full"></a>
+            <Link href={`/post/${post.slug}`}><a className="z-10 cursor-pointer absolute w-full h-full"></a></Link>
             {position == "LEFT" && <div className="absolute arrow-btn bottom-5 text-center py-3 cursor-pointer bg-pink-600 left-4 rounded-full">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white w-full" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                 </svg>
             </div>}
-            {position == "RIGHT" && <div className="absolute arrow-btn bottom-5 text-center py-3 bg-pink-600 right-4 rounded-full">
+            {position == "RIGHT" && <div className="absolute arrow-btn bottom-5 text-center py-3 cursor-pointer bg-pink-600 right-4 rounded-full">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white w-full" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
             </div>}
         </>

@@ -14,7 +14,7 @@ const AdjacentPosts = ({createdAt,slug}) => {
             setDataLoaded(true)
         } 
         _getAdjacentPosts()
-    }, [])
+    }, [slug])
 
     return (
         <div className="grid grid-cols-12 gap-12">

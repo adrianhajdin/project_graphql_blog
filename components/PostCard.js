@@ -1,6 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import moment from 'moment'
+import Link from 'next/link'
 
 import {grpahCMSImageLoader} from "../util";
 
@@ -9,6 +10,7 @@ const PostCard = ({post}) => {
         <div className="bg-white shadow-lg rounded-lg p-8 pb-12 mb-8">
             <div className="relative shadow-md inline-block w-full h-80 mb-6">
             <Image
+                unoptimized
                 loader={grpahCMSImageLoader}
                 alt={post.title} 
                 className="shadow-lg rounded-lg"
@@ -16,10 +18,11 @@ const PostCard = ({post}) => {
                 src={post.featuredImage.url}
             />
             </div>
-            <a href={`/post/${post.slug}`}><h1 className="transition duration-700 text-center mb-8 cursor-pointer hover:text-pink-600 text-3xl font-semibold">{post.title}</h1></a>
+            <h1 className="transition duration-700 text-center mb-8 cursor-pointer hover:text-pink-600 text-3xl font-semibold"><Link href={`/post/${post.slug}`}>{post.title}</Link></h1>
             <div className="flex items-center justify-center mb-8 w-full">
                 <div className="flex mr-8 items-center">
                     <Image
+                        unoptimized
                         loader={grpahCMSImageLoader}
                         alt={post.author.name} 
                         height="30px"
@@ -40,9 +43,9 @@ const PostCard = ({post}) => {
                 {post.excerpt}
             </p>
             <div className="text-center">
-                <a href={`/post/${post.slug}`} className="transition duration-500 ease transform hover:-translate-y-1 inline-block bg-pink-600 text-lg font-medium rounded-full text-white px-8 py-3 cursor-pointer">
-                    Continue Reading
-                </a>
+                <Link href={`/post/${post.slug}`}>
+                    <a className="transition duration-500 ease transform hover:-translate-y-1 inline-block bg-pink-600 text-lg font-medium rounded-full text-white px-8 py-3 cursor-pointer">Continue Reading</a>
+                </Link>
             </div>
         </div>
     )
