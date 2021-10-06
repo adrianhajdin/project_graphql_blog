@@ -4,7 +4,6 @@ import {PostCard,Categories} from "../../components"
 
 
 const CategoryPost = ({posts}) => {
-    console.log("posts compo",posts)
     return (
         <>
         <div className="container mx-auto px-10">
@@ -28,7 +27,6 @@ const CategoryPost = ({posts}) => {
 export default CategoryPost
 
 export async function getStaticProps({ params}) {
-    console.log("params category",params)
     const posts = await getCategoryPost(params.slug)
     return {
       props: { posts },

@@ -137,7 +137,6 @@ export async function getAdjacentPosts(createdAt,slug) {
 }
 
 export async function getCategoryPost(slug) {
-  console.log("slug service", slug)
   let query = `
   query GetCategoryPost($slug: String!) {
     postsConnection(where: {categories_none: {slug: $slug}}) {
@@ -190,10 +189,21 @@ export async function getFeaturedPosts() {
       slug
       createdAt
     }
-  }
-  
-    
+  }   
   `
   let result = await request(graphqlAPI, query)
   return result.posts
+}
+
+export async function submitComment(obj) {
+  
+  let result = await fetch('/api/comments',{
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: JSON.stringify(obj)
+  })
+  return result.json()
 }

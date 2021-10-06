@@ -80,7 +80,6 @@ const PostDetail = ({post}) => {
                         let children = typeObj.children.map((item,itemindex) => {
                             return getContentFragment(itemindex,item.text,item)
                         })
-                        console.log("children",children)
                         return getContentFragment(
                             index,
                             children,
