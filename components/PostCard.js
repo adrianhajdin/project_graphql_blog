@@ -7,20 +7,20 @@ import {grpahCMSImageLoader} from "../util";
 
 const PostCard = ({post}) => {
     return (
-        <div className="bg-white shadow-lg rounded-lg p-8 pb-12 mb-8">
-            <div className="relative shadow-md inline-block w-full h-80 mb-6">
+        <div className="bg-white shadow-lg rounded-lg p-0 lg:p-8 pb-12 mb-8">
+            <div className="relative shadow-md inline-block w-full h-60 lg:h-80 mb-6">
             <Image
                 unoptimized
                 loader={grpahCMSImageLoader}
                 alt={post.title} 
-                className="shadow-lg rounded-lg"
+                className="shadow-lg rounded-t-lg lg:rounded-lg"
                 layout="fill"
                 src={post.featuredImage.url}
             />
             </div>
             <h1 className="transition duration-700 text-center mb-8 cursor-pointer hover:text-pink-600 text-3xl font-semibold"><Link href={`/post/${post.slug}`}>{post.title}</Link></h1>
-            <div className="flex items-center justify-center mb-8 w-full">
-                <div className="flex mr-8 items-center">
+            <div className="block lg:flex text-center items-center justify-center mb-8 w-full">
+                <div className="flex items-center justify-center mb-4 lg:mb-0 w-full lg:w-auto mr-8 items-center">
                     <Image
                         unoptimized
                         loader={grpahCMSImageLoader}
@@ -39,7 +39,7 @@ const PostCard = ({post}) => {
                     <span className="align-middle">{moment(post.createdAt).format("MMM DD, YYYY")}</span>
                 </div>
             </div>
-            <p className="text-center text-lg text-gray-700 font-normal pl-20 pr-20 mb-8">
+            <p className="text-center text-lg text-gray-700 font-normal px-4 lg:px-20 mb-8">
                 {post.excerpt}
             </p>
             <div className="text-center">
