@@ -28,7 +28,7 @@ const CommentsForm = ({ slug }) => {
       comment: commentEl.current.value,
       slug,
     };
-    debugger;
+
     if (storeDataEl.current.checked) {
       localStorage.setItem('name', nameEl.current.value);
       localStorage.setItem('email', emailEl.current.value);
