@@ -13,6 +13,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "graphql": "^15.6.1",
     "graphql-request": "^3.5.0",
     "html-react-parser": "^1.4.0",
     "moment": "^2.29.1",

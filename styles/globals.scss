@@ -2,18 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: 'Montserrat', sans-serif;
   &:before{
     content:'';
     content: "";
     width: 100%;
     height: 100vh;
     background: linear-gradient(to right bottom, #6d327c, #485DA6, #00a1ba, #01b18e, #32b37b);
+    // background: #D3D3D3;
     position: fixed;
     left: 0;
     top: 0;
@@ -24,6 +26,7 @@ body {
 .text-shadow{
   text-shadow: 0px 2px 0px rgb(0 0 0 / 30%);
 }
+
 .adjacent-post{
   & .arrow-btn{
     transition: width 300ms ease;
@@ -35,6 +38,7 @@ body {
     }
   }
 }
+
 .react-multi-carousel-list {
   & .arrow-btn{
     transition: width 300ms ease;
