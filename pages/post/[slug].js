@@ -1,8 +1,6 @@
 import React from 'react';
 import { getPosts, getPostDetails } from '../../services';
-import {
-  PostDetail, Categories, RelatedPosts, Author, Comments, CommentsForm,
-} from '../../components';
+import { PostDetail, Categories, RelatedPosts, Author, Comments, CommentsForm } from '../../components';
 import { AdjacentPosts } from '../../sections';
 
 const PostDetails = ({ post }) => (

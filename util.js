@@ -1,3 +1,1 @@
-export const grpahCMSImageLoader = ({ src }) => {
-    return src
-}
+export const grpahCMSImageLoader = ({ src }) => src;
