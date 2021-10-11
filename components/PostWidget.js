@@ -4,20 +4,26 @@ import moment from 'moment';
 import Link from 'next/link';
 
 import { grpahCMSImageLoader } from '../util';
-import { getSimilarPosts } from '../services';
+import { getSimilarPosts, getRecentPosts } from '../services';
 
-const RelatedPosts = ({ categories, slug }) => {
+const PostWidget = ({ categories, slug }) => {
   const [relatedPosts, setRelatedPosts] = useState([]);
 
   useEffect(() => {
-    getSimilarPosts(categories, slug).then((result) => {
-      setRelatedPosts(result);
-    });
+    if (slug) {
+      getSimilarPosts(categories, slug).then((result) => {
+        setRelatedPosts(result);
+      });
+    } else {
+      getRecentPosts().then((result) => {
+        setRelatedPosts(result);
+      });
+    }
   }, [slug]);
 
   return (
     <div className="bg-white shadow-lg rounded-lg p-8 pb-12 mb-8">
-      <h3 className="text-xl mb-8 font-semibold border-b pb-4">Related Posts</h3>
+      <h3 className="text-xl mb-8 font-semibold border-b pb-4">{slug ? 'Related Posts' : 'Recent Posts'}</h3>
       {relatedPosts.map((post, index) => (
         <div key={index} className="flex items-center w-full mb-4">
           <div className="w-16 flex-none">
@@ -41,4 +47,4 @@ const RelatedPosts = ({ categories, slug }) => {
   );
 };
 
-export default RelatedPosts;
+export default PostWidget;

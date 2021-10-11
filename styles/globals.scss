@@ -14,12 +14,16 @@ body {
     content: "";
     width: 100%;
     height: 100vh;
-    background: linear-gradient(to right bottom, #6d327c, #485DA6, #00a1ba, #01b18e, #32b37b);
+    //background: linear-gradient(to right bottom, #6d327c, #485DA6, #00a1ba, #01b18e, #32b37b);
     // background: #D3D3D3;
+    background-image: url("../public/bg2.jpg");
     position: fixed;
     left: 0;
     top: 0;
     z-index: -1;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 }
 
