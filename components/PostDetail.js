@@ -1,8 +1,6 @@
 import React from 'react';
-import Image from 'next/image';
-import moment from 'moment';
 
-import { grpahCMSImageLoader } from '../util';
+import moment from 'moment';
 
 const PostDetail = ({ post }) => {
   const getContentFragment = (index, text, obj, type) => {
@@ -31,11 +29,9 @@ const PostDetail = ({ post }) => {
         return <h4 key={index} className="text-md font-semibold mb-4">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</h4>;
       case 'image':
         return (
-          <Image
+          <img
             key={index}
-            loader={grpahCMSImageLoader}
             alt={obj.title}
-            unoptimized
             height={obj.height}
             width={obj.width}
             src={obj.src}
@@ -49,26 +45,13 @@ const PostDetail = ({ post }) => {
   return (
     <>
       <div className="bg-white shadow-lg rounded-lg lg:p-8 pb-12 mb-8">
-        {/* <div className="relative shadow-md inline-block w-full h-80 mb-6">
-          <Image
-            unoptimized
-            loader={grpahCMSImageLoader}
-            alt={post.title}
-            className="shadow-lg rounded-t-lg lg:rounded-lg"
-            layout="fill"
-            src={post.featuredImage.url}
-          />
-        </div> */}
         <div className="relative overflow-hidden shadow-md mb-6">
           <img src={post.featuredImage.url} alt="" className="object-top h-full w-full object-cover  shadow-lg rounded-t-lg lg:rounded-lg" />
         </div>
-
         <div className="px-4 lg:px-0">
           <div className="flex items-center mb-8 w-full">
             <div className="hidden md:flex items-center justify-center lg:mb-0 lg:w-auto mr-8 items-center">
-              <Image
-                unoptimized
-                loader={grpahCMSImageLoader}
+              <img
                 alt={post.author.name}
                 height="30px"
                 width="30px"

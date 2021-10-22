@@ -1,10 +1,16 @@
-import React, { useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 
-import { CategoryContext } from '../contexts/CategoryContext.Context';
+import { getCategories } from '../services';
 
 const Categories = () => {
-  const categories = useContext(CategoryContext);
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    getCategories().then((newCategories) => {
+      setCategories(newCategories);
+    });
+  }, []);
 
   return (
     <div className="bg-white shadow-lg rounded-lg p-8 pb-12 mb-8">
