@@ -4,7 +4,7 @@
 ![GraphCMS Headless Blog](https://i.ibb.co/NmnJnKD/image.png)
 
 ## Stay up to date with new projects
-New major projects coming soon, subscribe to the mailing list to stay up to date https://resources.jsmasterypro.com/newsletter
+New major projects coming soon, subscribe to the mailing list to stay up to date https://resource.jsmasterypro.com/newsletter
 
 ## Introduction
 This is a code repository for the corresponding video tutorial. 
