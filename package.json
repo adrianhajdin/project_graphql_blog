@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": ">=14.x"
+    "node": ">=14.0"
   },
   "engineStrict": true,
   "scripts": {
@@ -25,7 +25,6 @@
     "swr": "^1.0.1"
   },
   "devDependencies": {
-    "@vercel/node": "^1.12.1",
     "autoprefixer": "^10.3.6",
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "^18.2.1",
