@@ -19,6 +19,13 @@ const Header = () => {
           <Link href="/">
             <span className="cursor-pointer font-bold text-4xl text-white">Graph CMS</span>
           </Link>
+          <a
+            href="https://twitter.com/atilafassina"
+            target="_blank"
+            rel="me noopener noreferrer"
+          >
+            @AtilaFassina
+          </a>
         </div>
         <div className="hidden md:float-left md:contents">
           {categories.map((category, index) => (
