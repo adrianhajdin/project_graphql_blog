@@ -1,4 +1,3 @@
-ESLINT_NO_DEV_ERRORS=true
 import React from 'react';
 
 const Loader = () => (
