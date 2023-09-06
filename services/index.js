@@ -7,7 +7,8 @@ export const getPosts = async () => {
     query MyQuery {
       postsConnection {
         edges {
-          cursor
+      //i dont think cursor would be here
+          // cursor
           node {
             author {
               bio
