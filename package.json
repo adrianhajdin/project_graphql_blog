@@ -16,6 +16,7 @@
     "graphql": "^15.6.1",
     "graphql-request": "^3.5.0",
     "html-react-parser": "^1.4.0",
+    "lodash": "^4.17.21",
     "moment": "^2.29.1",
     "next": "11.1.2",
     "react": "17.0.2",
